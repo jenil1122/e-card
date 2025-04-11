@@ -25,41 +25,27 @@ import react from "@vitejs/plugin-react";
 import themePlugin from "@replit/vite-plugin-shadcn-theme-json";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-var __filename = fileURLToPath(import.meta.url);
-var __dirname = dirname(__filename);
 var vite_config_default = defineConfig({
-  base: "/e-card/",
   plugins: [
     react(),
     runtimeErrorOverlay(),
     themePlugin(),
-    {
-      name: "html-404",
-      closeBundle: async () => {
-        const fs2 = await import("fs/promises");
-        const indexPath = path.resolve(__dirname, "dist/public/index.html");
-        const notFoundPath = path.resolve(__dirname, "dist/public/404.html");
-        try {
-          await fs2.copyFile(indexPath, notFoundPath);
-          console.log("\u2705 404.html generated for GitHub Pages");
-        } catch (err) {
-          console.error("\u274C Failed to copy index.html to 404.html:", err);
-        }
-      }
-    }
+    ...process.env.NODE_ENV !== "production" && process.env.REPL_ID !== void 0 ? [
+      await import("@replit/vite-plugin-cartographer").then(
+        (m) => m.cartographer()
+      )
+    ] : []
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "client", "src"),
-      "@shared": path.resolve(__dirname, "shared"),
-      "@assets": path.resolve(__dirname, "attached_assets")
+      "@": path.resolve(import.meta.dirname, "client", "src"),
+      "@shared": path.resolve(import.meta.dirname, "shared"),
+      "@assets": path.resolve(import.meta.dirname, "attached_assets")
     }
   },
-  root: path.resolve(__dirname, "client"),
+  root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(__dirname, "dist/public"),
+    outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true
   }
 });
