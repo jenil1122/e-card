@@ -220,8 +220,8 @@ const ContactCard = () => {
               {contactData.location}
             </a>
           </div>
-          <p className="text-xs text-muted-gold mt-1 italic">Click on address to open maps</p>
         </div>
+          <p className="text-xs text-muted-gold mt-1 italic">Click on address to open maps</p>
       </motion.div>
       
       {/* Social Media Links */}
