@@ -104,14 +104,14 @@ export async function generateVCF(contactData: ContactData, deviceType: DeviceTy
   // Create VCF content
   const vcfData = `BEGIN:VCARD
 VERSION:3.0
-N:${lastName};${firstName};;;
-FN:${contactData.name}
-ORG:
+N:Patel;Harish;;;
+FN:Harish Patel
 TITLE:
+ORG:New Abra Ka Dabra
 ${phoneLines}
 ${contactData.workPhone ? `TEL;TYPE=WORK,VOICE:${contactData.workPhone}` : ''}
 EMAIL:${contactData.email}
-${contactData.website ? `URL:https://${contactData.website}` : ''}
+${contactData.website ? `URL:https://jenil1122.github.io/e-card/` : ''}
 ADR;TYPE=WORK:;;${contactData.location};;;;
 NOTE:${notes}
 CATEGORIES:Mobile Phones and Tablets
