@@ -5,6 +5,7 @@ import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 export default defineConfig({
+  base: "/e-card/", // 👈 THIS is the key for GitHub Pages!
   plugins: [
     react(),
     runtimeErrorOverlay(),
