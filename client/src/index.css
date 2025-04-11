@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background-color: #121212;
+    overflow-x: hidden;
+  }
+
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+
+    --primary: 46 57% 50%;
+    --primary-foreground: 0 0% 7%;
+
+    --secondary: 46 80% 80%;
+    --secondary-foreground: 0 0% 7%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 95%;
+
+    --muted: 46 20% 40%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 46 57% 50%;
+    --accent-foreground: 0 0% 7%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 46 57% 50%;
+    --input: 46 57% 50%;
+    --ring: 46 57% 50%;
+
+    --radius: 0.5rem;
+  }
+
+  /* Deep black and rich gold palette */
+  .deep-black {
+    @apply bg-[#121212] text-white;
+  }
+
+  .rich-gold {
+    @apply text-[#D4AF37];
+  }
+
+  .light-gold {
+    @apply text-[#F0E68C];
+  }
+
+  .muted-gold {
+    @apply text-[#BBA14F];
+  }
+
+  /* Gold Shimmer Effect */
+  .shimmer {
+    background: linear-gradient(to right, #121212 0%, #D4AF37 20%, #F0E68C 30%, #D4AF37 40%, #121212 100%);
+    background-size: 800px 104px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 2s infinite linear;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -468px 0;
+    }
+    100% {
+      background-position: 468px 0;
+    }
+  }
+
+  .gold-border {
+    border: 1px solid #D4AF37;
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, #D4AF37, #F0E68C);
+  }
+
+  /* Font family setup */
+  .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-sans {
+    font-family: 'Poppins', sans-serif;
+  }
+}
