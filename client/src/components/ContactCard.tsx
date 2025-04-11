@@ -147,7 +147,7 @@ const ContactCard = () => {
                 </a>
               ))}
             </div>
-            <p className="text-xs text-muted-gold mt-1 italic">Click on number to call now</p>
+            <p className="text-xs text-muted-gold mt-1 italic">(Click on number to call now)</p>
           </div>
         </div>
         
@@ -166,7 +166,7 @@ const ContactCard = () => {
             >
               {contactData.workPhone}
             </a>
-            <p className="text-xs text-muted-gold mt-1 italic">Click on number to call now</p>
+            <p className="text-xs text-muted-gold mt-1 italic">(Click on number to call now)</p>
           </div>
         </div>
         
@@ -221,7 +221,7 @@ const ContactCard = () => {
             </a>
           </div>
         </div>
-          <p className="text-xs text-muted-gold mt-1 italic">Click on address to open maps</p>
+          <p className="text-xs text-muted-gold mt-1 italic">  (Click on address to open maps)</p>
       </motion.div>
       
       {/* Social Media Links */}
