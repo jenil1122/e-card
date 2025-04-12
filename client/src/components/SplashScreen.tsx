@@ -25,7 +25,7 @@ const SplashScreen = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-rich-gold mt-6 font-serif text-xl"
+          className="text-rich-gold mt-6 font-serif text-xl shimmer text-rich-gold"
         >
           New Abra Ka Dabra
         </motion.p>
