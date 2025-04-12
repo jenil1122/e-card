@@ -8,7 +8,7 @@ const HomePage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 2200);
+    }, 2400);
 
     return () => clearTimeout(timer);
   }, []);
