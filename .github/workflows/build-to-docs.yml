@@ -1,39 +1,42 @@
-name: Build and Deploy to Docs
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # or your default branch
+      - main  # or the branch you want to trigger the deploy
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: '20'  # Change if you're using a different version
+          node-version: '16'
 
       - name: Install dependencies
-        run: npm ci  # or 'npm install' if needed
+        run: npm install
 
       - name: Build the project
-        run: npm run build  # this should generate 'dist/public'
+        run: npm run build  # Assuming this generates the dist/public directory
 
-      - name: Move build to docs folder
-        run: |
-          rm -rf docs
-          mv dist/public docs
+      - name: Remove /docs directory
+        run: rm -rf docs  # Remove the existing docs directory
 
-      - name: Commit and push docs folder
+      - name: Copy build files to /docs
+        run: cp -r dist/public/* docs/  # Copy files from dist/public to docs
+
+      - name: Configure git
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs
-          git commit -m "Update docs with latest build"
-          git push
-        continue-on-error: true  # Prevents failure if there are no changes
+          git config user.name "Your Name"
+          git config user.email "youremail@example.com"
+
+      - name: Commit and push changes
+        run: |
+          git add docs/*
+          git commit -m "Deploy to GitHub Pages"
+          git push origin main  # Push changes to the main branch
