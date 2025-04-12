@@ -26,7 +26,7 @@ const ContactCard = () => {
     email: "hirji.newabrakadabra@gmail.com",
     website: "",
     location: "Shop No.70, Galleria Shopping Mall, Hiranandani Gardens, Powai, Mumbai - 400072, Maharashtra, India",
-    address: "https://maps.google.com/?q=Shop No.70, Galleria Shopping Mall, Hiranandani Gardens, Powai, Mumbai",
+    address: "https://maps.app.goo.gl/YZdUBwiV8yLdZA5PA?g_st=com.google.maps.preview.copy",
     hours: "Open 10AM–10PM, All Days (Sat–Sun too!)",
     description: "📱 Mobile Phones | Tablets | Accessories | Covers 💼\nBest deals on latest gadgets and premium accessories",
     photo: "https://jenil1122.github.io/Contact/logo.png"
