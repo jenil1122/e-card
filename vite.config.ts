@@ -4,9 +4,6 @@ import themePlugin from "@replit/vite-plugin-shadcn-theme-json";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
-// Import the required polyfills
-import crypto from 'crypto-browserify';
-
 export default defineConfig({
   base: '/e-card/',  // Ensure the base path is correct for GitHub Pages
   plugins: [
@@ -24,14 +21,11 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": path.resolve(import.meta.url, "client", "src"),
-      "@shared": path.resolve(import.meta.url, "shared"),
-      "@assets": path.resolve(import.meta.url, "attached_assets"),
-      // Polyfill the 'crypto' module with 'crypto-browserify'
-      crypto: import.meta.resolve('crypto-browserify'),
+      "@": path.resolve(__dirname, 'client', 'src'),
+      "@shared": path.resolve(__dirname, 'shared'),
+      "@assets": path.resolve(__dirname, 'attached_assets'),
     },
   },
-  // Set the root directory to where index.html is located
   root: path.resolve(__dirname, 'client'),  // Ensure this points to the directory containing your index.html
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
