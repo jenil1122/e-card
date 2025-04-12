@@ -27,6 +27,7 @@ const ContactCard = () => {
     website: "",
     location: "Shop No.70, Galleria Shopping Mall, Hiranandani Gardens, Powai, Mumbai - 400072, Maharashtra, India",
     address: "https://maps.app.goo.gl/YZdUBwiV8yLdZA5PA?g_st=com.google.maps.preview.copy",
+    address1: "https://maps.apple.com/?address=121-122,%20Central%20Avenue,%20Galleria%20Shopping%20Mall,%20Hiranandani%20Gardens,%20Powai,%20Mumbai,%20400076,%20Maharashtra,%20India&auid=1633291761877231984&ll=19.119414,72.911844&lsp=9902&q=New%20Abra%20Ka%20Dabra&t=m"
     hours: "Open 10AM–10PM, All Days (Sat–Sun too!)",
     description: "📱 Mobile Phones | Tablets | Accessories | Covers 💼\nBest deals on latest gadgets and premium accessories",
     photo: "https://jenil1122.github.io/Contact/logo.png"
