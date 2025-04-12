@@ -107,7 +107,7 @@ const ContactCard = () => {
         <h1 className="text-2xl font-bold font-serif text-rich-gold mt-2 shimmer">
           {contactData.name}
         </h1>
-        <p className="text-2xl font-bold font-serif text-rich-gold mt-1 shimmer>
+        <p className="text-2xl font-bold font-serif text-rich-gold mt-1 shimmer">
           {contactData.title}
         </p>
         
