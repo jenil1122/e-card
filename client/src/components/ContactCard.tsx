@@ -96,24 +96,31 @@ const ContactCard = () => {
       whileHover={{ y: -5, transition: { duration: 0.3 } }}
     >
       {/* Profile Section */}
-      <div className="flex flex-col items-center">
-        <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-rich-gold p-1 mb-4 bg-black">
-          <img 
-            src={contactData.photo} 
-            alt="Profile Photo" 
-            className="rounded-full object-contain w-full h-full" 
-          />
-        </div>
-        
-        <h1 className="text-2xl font-bold font-serif text-rich-gold mt-2 shimmer">
-          {contactData.name}
-        </h1>
-        <p className="text-2xl font-bold font-serif text-rich-gold mt-1 shimmer">
-          {contactData.title}
-        </p>
-        
-        <div className="h-px w-24 bg-rich-gold opacity-50 my-6"></div>
-      </div>
+<motion.div
+  className="flex flex-col items-center"
+  variants={cardVariants}
+  initial="hidden"
+  animate="visible"
+  custom={1}
+>
+  <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-rich-gold p-1 mb-4 bg-black">
+    <img 
+      src={contactData.photo} 
+      alt="Profile Photo" 
+      className="rounded-full object-contain w-full h-full" 
+    />
+  </div>
+  
+  <h1 className="text-2xl font-bold font-serif text-rich-gold mt-2 shimmer">
+    {contactData.name}
+  </h1>
+  <p className="text-2xl font-bold font-serif text-rich-gold mt-1 shimmer">
+    {contactData.title}
+  </p>
+  
+  <div className="h-px w-24 bg-rich-gold opacity-50 my-6"></div>
+</motion.div>
+
       
       {/* Contact Information */}
       <motion.div 
