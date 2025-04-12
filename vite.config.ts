@@ -4,6 +4,9 @@ import themePlugin from "@replit/vite-plugin-shadcn-theme-json";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
+// Import the required polyfills
+import crypto from 'crypto-browserify';
+
 export default defineConfig({
   base: '/e-card/',
   plugins: [
@@ -24,6 +27,8 @@ export default defineConfig({
       "@": path.resolve(import.meta.dirname, "client", "src"),
       "@shared": path.resolve(import.meta.dirname, "shared"),
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
+      // Polyfill the 'crypto' module with 'crypto-browserify'
+      crypto: require.resolve('crypto-browserify'),
     },
   },
   root: path.resolve(import.meta.dirname, "client"),
