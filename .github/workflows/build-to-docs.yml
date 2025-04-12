@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Set this to the branch you want to deploy from (e.g., 'main' or 'master')
+      - main
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Specify the version of Node.js you're using
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
@@ -23,10 +23,10 @@ jobs:
       - name: Build the project
         run: npm run build
 
-      - name: Remove docs folder
+      - name: Remove old docs
         run: rm -rf docs
-      
-      - name: Create docs directory if not exists
+
+      - name: Create docs directory
         run: mkdir -p docs
 
       - name: Copy build to docs
@@ -37,8 +37,5 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add docs
-          git commit -m "Deploy to GitHub Pages"
-          git push origin main  # Push to the 'main' branch or any other branch you want to deploy from
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # This automatically gets a token to push changes
-
+          git commit -m "Deploy to GitHub Pages" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
