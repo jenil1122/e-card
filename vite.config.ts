@@ -4,11 +4,11 @@ import themePlugin from "@replit/vite-plugin-shadcn-theme-json";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
-// Import the required polyfills for GitHub Actions
+// Import the required polyfills
 import crypto from 'crypto-browserify';
 
 export default defineConfig({
-  base: '/e-card/',  // Make sure this is your GitHub Pages URL path
+  base: '/e-card/',  // Ensure the base path is correct for GitHub Pages
   plugins: [
     react(),
     runtimeErrorOverlay(),
@@ -31,12 +31,12 @@ export default defineConfig({
       crypto: import.meta.resolve('crypto-browserify'),
     },
   },
-  root: path.resolve(import.meta.url, "client"),
+  // Set the root directory to where index.html is located
+  root: path.resolve(__dirname, 'client'),  // Ensure this points to the directory containing your index.html
   build: {
-    outDir: path.resolve(import.meta.url, "dist/public"),
+    outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
-    // For GitHub Pages deployment, we need to make sure that the base path is correct
-    assetsDir: '', // Make sure assets are served correctly
-    sourcemap: true, // For better debugging, especially in production
+    assetsDir: '', // Ensure assets are served correctly
+    sourcemap: true, // For better debugging
   },
 });
