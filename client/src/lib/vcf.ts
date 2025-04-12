@@ -132,61 +132,32 @@ END:VCARD`;
       link.click();
       break;
     case 'android':
-      // Android - attempt direct contact import using multiple approaches
-      try {
-        // Method 1: Using content intent scheme
-        const vcfBlob = new Blob([vcfData], { type: 'text/vcard' });
-        const vcfUrl = URL.createObjectURL(vcfBlob);
-        
-        // Method 2: Create an element to open the contacts app
-        const importElement = document.createElement('a');
-        importElement.setAttribute('href', vcfUrl);
-        importElement.setAttribute('target', '_blank');
-        importElement.style.display = 'none';
-        document.body.appendChild(importElement);
-        
-        // Method 3: Try direct intent schema
-        try {
-          // Direct intent schema approach
-          window.location.href = `intent://contacts/show_or_create_contact#Intent;scheme=content;type=text/vcard;package=com.android.contacts;end;S.contact=${encodeURIComponent(vcfUrl)}`;
-          
-          // Small delay to let the intent process
-          setTimeout(() => {
-            // Fallback to Method 2
-            importElement.click();
-            
-            // Clean up the element
-            setTimeout(() => {
-              document.body.removeChild(importElement);
-            }, 100);
-          }, 500);
-        } catch (intentError) {
-          console.log('Intent method failed, using direct link', intentError);
-          // Just use Method 2
-          importElement.click();
-          
-          // Clean up the element
-          setTimeout(() => {
-            document.body.removeChild(importElement);
-          }, 100);
-        }
-        
-        // Alert user with instructions as a fallback
-        setTimeout(() => {
-          alert('If the contact app didn\'t open automatically, please check your downloads folder and tap on the New_Abra_Ka_Dabra_contact.vcf file to import the contact.');
-          // Fall back to download method
-          link.click();
-        }, 2000);
-      } catch (error) {
-        console.error('Error with Android contact import:', error);
-        // Fallback to direct download
-        link.click();
-        // Alert with instructions
-        setTimeout(() => {
-          alert('Please check your downloads folder and tap on the New_Abra_Ka_Dabra_contact.vcf file to import the contact.');
-        }, 1000);
-      }
-      break;
+  // Android - attempt direct contact import using the Google Drive link
+  try {
+    // Direct Google Drive download link (replace with your actual link)
+    const googleDriveLink = 'https://drive.google.com/uc?export=download&id=1huGXA73ROxhhScH0SyKUnMEeVlrVOTLH';
+    
+    // Method 1: Create an element to open the Google Drive link (direct download)
+    const importElement = document.createElement('a');
+    importElement.setAttribute('href', googleDriveLink);
+    importElement.setAttribute('target', '_blank');
+    importElement.style.display = 'none';
+    document.body.appendChild(importElement);
+    
+    // Trigger the download by clicking the link
+    importElement.click();
+    
+    // Clean up the element
+    setTimeout(() => {
+      document.body.removeChild(importElement);
+    }, 100);
+  } catch (error) {
+    console.error('Error with Android contact import:', error);
+    // Fallback to default method (if needed)
+    link.click();
+  }
+  break;
+
     default:
       // Other devices - direct download
       link.click();
