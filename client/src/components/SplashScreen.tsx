@@ -11,7 +11,7 @@ const SplashScreen = () => {
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 1.5, ease: "easeOut" }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
           className="splash-logo-container relative"
         >
           <img
@@ -24,7 +24,7 @@ const SplashScreen = () => {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 1.5 }}
+          transition={{ delay: 0.5, duration: 1.5 }}
           className="text-rich-gold mt-6 font-serif text-xl shimmer text-rich-gold"
         >
           New Abra Ka Dabra
