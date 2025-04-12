@@ -3,40 +3,39 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # or the branch you want to trigger the deploy
+      - main  # Set this to the branch you want to deploy from (e.g., 'main' or 'master')
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'  # Specify the version of Node.js you're using
 
       - name: Install dependencies
         run: npm install
 
       - name: Build the project
-        run: npm run build  # Assuming this generates the dist/public directory
+        run: npm run build
 
-      - name: Remove /docs directory
-        run: rm -rf docs  # Remove the existing docs directory
+      - name: Remove docs folder
+        run: rm -rf docs
 
-      - name: Copy build files to /docs
-        run: cp -r dist/public/* docs/  # Copy files from dist/public to docs
+      - name: Copy build to docs
+        run: cp -r dist/public/* docs/
 
-      - name: Configure git
+      - name: Commit and push to GitHub Pages
         run: |
-          git config user.name "Your Name"
-          git config user.email "youremail@example.com"
-
-      - name: Commit and push changes
-        run: |
-          git add docs/*
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add docs
           git commit -m "Deploy to GitHub Pages"
-          git push origin main  # Push changes to the main branch
+          git push origin main  # Push to the 'main' branch or any other branch you want to deploy from
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # This automatically gets a token to push changes
+
