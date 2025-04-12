@@ -25,6 +25,9 @@ jobs:
 
       - name: Remove docs folder
         run: rm -rf docs
+      
+      - name: Create docs directory if not exists
+        run: mkdir -p docs
 
       - name: Copy build to docs
         run: cp -r dist/public/* docs/
