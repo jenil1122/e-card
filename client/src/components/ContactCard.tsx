@@ -124,7 +124,13 @@ const ContactCard = () => {
       >
         {/* Description */}
         <div className="text-center mb-4">
-          <p className="text-white">{contactData.description}</p>
+          <p
+             className="text-white"
+            dangerouslySetInnerHTML={{
+           __html: contactData.description.replace(/\n/g, "<br />"),
+             }}
+           ></p>
+
         </div>
         
         {/* Mobile Phone */}
